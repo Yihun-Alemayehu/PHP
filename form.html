@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Yize
+    </title>
+</head>
+
+<body>
+    <?php
+        $nameError = $emailError = "";
+        $name = $email = "";
+
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+             //Validate name
+             if(empty($_POST["name"])){
+                 $nameError = "Name is required";
+             }else {
+                $name = test_form($_POST["name"]);
+                if(!preg_match("/^[a-zA-Z ]*$/", $name)){
+                    $nameError = "Only letters and white space allowed";
+                }
+             }
+
+             //Validate email
+             if(empty($_POST["email"])){
+                $emailError = "Email is required";
+             }else {
+                $email = test_form($_POST["email"]);
+                if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    $emailError = "Invalid email format";
+                }
+             }
+        }
+
+    function test_form($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    Name: <input type="text" name="name"><br>
+    <span class="error">*
+        <?php echo $nameError;?>
+    </span>
+    <br><br>
+    Email: <input type="email" name="email"><br>
+    <span class="error">*
+        <?php echo $emailError;?>
+    </span>
+    <br><br>
+    <input type="submit" value="Submit" name="submit">
+    </form>
+
+    <?php 
+        if(!empty($name) && !empty($email) && empty($nameError) && empty($emailError)){
+            echo "<h2>Your Input:</h2>";
+            echo "Name: ". $name. "<br>";
+            echo "Email: ". $email. "<br>";
+        }
+    ?>
+</body>
+
+</html>
