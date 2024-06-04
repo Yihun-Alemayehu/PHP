@@ -24,21 +24,21 @@ $query3 = "CREATE TABLE IF NOT EXISTS users (
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
 $conn->query($query3);
-// $query4 = "INSERT INTO users (firstname, lastname, email)
-//     VALUES ('Yihun', 'Alemayehu', 'yihun@alemayehu')";
-// $conn->query($query4);
+$query4 = "INSERT INTO users (firstname, lastname, email)
+    VALUES ('Yihun', 'Alemayehu', 'yihun@alemayehu')";
+$conn->query($query4);
 
-// $sql = "INSERT INTO users (firstname, lastname, email)
-// VALUES ('zeri', 'kassahun', 'zeri@zerish.com')";
+$sql = "INSERT INTO users (firstname, lastname, email)
+VALUES ('zeri', 'kassahun', 'zeri@zerish.com')";
 
-// if ($conn->query($sql) === TRUE) {
-//     $last_id = $conn->insert_id;
-//     echo "New record created successfully. Last inserted ID is: " . $last_id;
-// } else {
-//     echo "Error: " . $sql . "<br>" . $conn->error;
-// }
+if ($conn->query($sql) === TRUE) {
+    $last_id = $conn->insert_id;
+    echo "New record created successfully. Last inserted ID is: " . $last_id;
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 
-// echo "Connected successfully";
+echo "Connected successfully";
 
 // Prepare and bind
 $stmt = $conn->prepare("INSERT INTO users (firstname, lastname, email) VALUES(?,?,?)");
