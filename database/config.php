@@ -47,7 +47,7 @@ $stmt->bind_param("sss", $firstname, $lastname, $email);
 // set parameters and execute
 $firstname = "Yihun";
 $lastname = "Alemayehu";
-$email = "apoesas@gmail.com";
+$email = "yankure01@gmail.com";
 $stmt->execute();
 
 echo "new records successfully created!";
