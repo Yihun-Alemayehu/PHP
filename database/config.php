@@ -45,8 +45,8 @@ $stmt = $conn->prepare("INSERT INTO users (firstname, lastname, email) VALUES(?,
 $stmt->bind_param("sss", $firstname, $lastname, $email);
 
 // set parameters and execute
-$firstname = "apo";
-$lastname = "esas";
+$firstname = "Yihun";
+$lastname = "Alemayehu";
 $email = "apoesas@gmail.com";
 $stmt->execute();
 
